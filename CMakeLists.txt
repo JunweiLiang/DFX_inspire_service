@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
-project(h1_inspire_service VERSION 0.1.0)
+project(inspire_service)
 
 if(NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE Debug)
+  set(CMAKE_BUILD_TYPE Release)
 endif()
 
 if (CMAKE_BUILD_TYPE MATCHES "Debug")
@@ -11,6 +11,10 @@ if (CMAKE_BUILD_TYPE MATCHES "Debug")
 else()
   message("Release mode")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O3 -DNDEBUG -fPIC")
+endif()
+
+if(POLICY CMP0167)
+  cmake_policy(SET CMP0167 NEW)
 endif()
 
 find_package(Boost COMPONENTS program_options REQUIRED)
@@ -22,9 +26,10 @@ include_directories(
 )
 
 link_libraries(unitree_sdk2 ddsc ddscxx rt pthread)
-link_libraries(unitree_idl libboost_program_options.a)
+link_libraries(libboost_program_options.a)
 
-add_executable(inspire_hand inspire_ctrl.cpp)
+add_executable(inspire_g1 inspire_g1.cpp)
+add_executable(inspire_h1 inspire_h1.cpp)
 
 # example
-add_executable(h1_hand_example example/inspire_hand.cpp)
+add_executable(hand_example example/hand_example.cpp)

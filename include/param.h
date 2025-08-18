@@ -29,7 +29,7 @@ po::variables_map helper(int argc, char** argv)
   po::options_description desc("Unitree H1 Inspire Hand Serial to DDS");
   desc.add_options()
     ("help,h", "produce help message")
-    ("serial,s", po::value<std::string>(&serial_port)->default_value("/dev/h1_newhand"), "serial port")
+    ("serial,s", po::value<std::string>(&serial_port)->default_value("/dev/ttyUSB0"), "serial port")
     ("network", po::value<std::string>(&network)->default_value(""), "DDS network interface")
     ("namespace", po::value<std::string>(&ns)->default_value("inspire"), "DDS topic namespace")
     ;

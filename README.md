@@ -71,6 +71,7 @@ Currently the dexterous hand only supports joint control, i.e. only the paramete
 
 ## unitree h1
 ```bash
+sudo apt install libboost-all-dev libspdlog-dev
 # Build project
 mkdir build & cd build
 cmake ..
@@ -83,6 +84,7 @@ sudo ./inspire_h1 -s /dev/ttyUSB0
 
 ## unitree g1
 ```bash
+sudo apt install libboost-all-dev libspdlog-dev
 # Build project
 mkdir build & cd build
 cmake ..

@@ -32,7 +32,9 @@ public:
 
   ssize_t send(const uint8_t* data, size_t len)
   {
+    tcflush(fd_, TCIFLUSH);
     ssize_t ret = ::write(fd_, data, len);
+    tcdrain(fd_);
     return ret;
   }
 

@@ -13,6 +13,8 @@ namespace param
 namespace po = boost::program_options;
 
 inline std::string serial_port;
+inline std::string serial_port_left;
+inline std::string serial_port_right;
 inline std::string network; 
 inline std::string ns; 
 inline float threhold;
@@ -30,6 +32,9 @@ po::variables_map helper(int argc, char** argv)
   desc.add_options()
     ("help,h", "produce help message")
     ("serial,s", po::value<std::string>(&serial_port)->default_value("/dev/ttyUSB0"), "serial port")
+    // added by junwei
+    ("serial_left", po::value<std::string>(&serial_port_left)->default_value("/dev/ttyUSB0"), "usb port for left hand")
+    ("serial_right", po::value<std::string>(&serial_port_right)->default_value("/dev/ttyUSB1"), "usb port for right hand")
     ("network", po::value<std::string>(&network)->default_value(""), "DDS network interface")
     ("namespace", po::value<std::string>(&ns)->default_value("inspire"), "DDS topic namespace")
     ;
